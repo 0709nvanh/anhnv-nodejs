@@ -6,3 +6,4 @@ exports.checkAuth = (req, res, next) => {
     res.redirect("/");
   }
 };
+
