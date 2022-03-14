@@ -1,35 +1,59 @@
-const products = [
-    {
-      id: 1,
-      name: "A",
-    },
-    {
-      id: 2,
-      name: "B",
-    },
-  ];
+import Product from '../models/product'
 
-export const List = (req, res) => {
+
+export const add = async (req, res) => {
+    try {
+      const product = await new Product(req.body).save();
+      res.json(product);
+    } catch (error) {
+      res.status(400).json({
+        message: "Not success"
+      })
+    }
+}
+
+
+export const List = async (req, res) => {
+  try {
+    const products = await Product.find().exec();
     res.json(products);
+  } catch (error) {
+    res.status(400).json({
+      message: "Not success"
+    })
+  }
 }
 
-export const getOne = (req, res) => {
-    const DetailProduct  = products.find(item => item.id === +req.params.id);
-    res.json(DetailProduct);
+export const getOne = async (req, res) => {
+    try {
+      const product = await Product.findOne({_id: req.params.id}).exec();
+      res.json(product);
+    } catch (error) {
+      res.status(400).json({
+        message: "Not success"
+      })
+    }
 }
 
-export const add = (req, res) => {
-    products.push(req.body)
-    res.json(products);
+export const update = async (req,res) => {
+  try {
+    const product = await Product.findOneAndUpdate({_id: req.params.id}, req.body, { new: true }).exec();
+    res.json(product);
+  } catch (error) {
+    res.status(400).json({
+      message: "Not success"
+    })
+  }
 }
 
-export const update =  (req,res) => {
-    const UpdateProduct = products.map(item => item.id === +req.params.id ? req.body : item)
-    res.json(req.body);
-}
-
-export const remove = (req, res) => {
-    const DelProduct  = products.filter(item => item.id === +req.params.id );
-    res.json(req.body);
+export const remove = async (req, res) => {
+    try {
+      const product = await Product.findOneAndDelete({_id: req.params.id}).exec();
+      res.json(product);
+    } catch (error) {
+      res.status(400).json({
+        message: "Not success"
+      })
+    }
 }
   
