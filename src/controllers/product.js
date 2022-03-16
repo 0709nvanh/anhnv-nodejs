@@ -1,8 +1,9 @@
 import Product from '../models/product'
-
+import slugify from 'slugify';
 
 export const add = async (req, res) => {
     try {
+      req.body.slug = slugify(req.body.name)
       const product = await new Product(req.body).save();
       res.json(product);
     } catch (error) {

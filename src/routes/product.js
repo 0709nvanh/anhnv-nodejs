@@ -7,19 +7,19 @@ const router = Router();
 
 
 // get all
-router.get("/product", checkAuth, List)
+    router.get("/product", checkAuth, List)
 
-// get one
-router.get("/product/:id" , getOne)
+    // get one
+    router.get("/product/:id" , getOne)
 
-// create
-router.post("/product", checkAuth, add)
+    // create
+    router.post("/product", checkAuth, add)
 
-// update
-router.put("/product/:id", checkAuth, update)
+    // update
+    router.put("/product/:id", checkAuth, update)
 
-// delete
-router.delete("/product/:id" , remove)
+    // delete
+    router.delete("/product/:id" , remove)
 
 // module.exports = router;
 export default router;
