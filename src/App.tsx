@@ -3,44 +3,37 @@ import './App.css'
 import type { ProductType } from './types/product'
 import axios from 'axios'
 import { list, remove } from './api/product';
+import { Route, Routes, NavLink } from 'react-router-dom';
+import Product from './components/Product';
+import Home from './components/Home';
+import WebsiteLayout from './components/layout/WebsiteLayout';
+import AdminLayout from './components/layout/AdminLayout';
+import Dashboard from './components/Dashboard';
+import ProductAdmin from './components/ProductAdmin';
 
 function App() {
-  const [product, setProduct] = useState<ProductType[]>([]);
-  useEffect(()=> {
-    const getProduct = async () => {
-      const { data } = await list()
-      setProduct(data)
-    }
-    getProduct();
-  }, [])
-
-  const removeItem = async (id: number) => {
-    const { data } = await remove(id);
-    data && setProduct(product.filter(item => item.id !== data.id))
-  }
-
+  
   return (
     <div className="App">
-      <table>
-        <thead>
-          <th>#</th>
-          <th>Name</th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          {product.map((item, index) => {
-            return <tr>
-                    <td>{index + 1}</td>
-                    <td>{item.name}</td>
-                    <td>
-                      <button onClick={() => removeItem(item.id)}>Remove</button>
-                    </td>
-                  </tr>
-          })}
-          
-        </tbody>
-      </table>
-      
+      <header>
+        <ul>
+          <li><NavLink to="/">Home page</NavLink></li>
+          <li><NavLink to="/product">Product</NavLink></li>
+          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+        </ul>
+      </header>
+      <main>
+      <Routes>
+        <Route path="/" element={<WebsiteLayout />}>
+          <Route index element={<Home />}/>
+          <Route path="product" element={<Product />} />
+        </Route>
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />}/>
+          <Route path="product" element={<ProductAdmin />}/>
+        </Route>
+      </Routes>
+      </main>
     </div>
   )
 }
