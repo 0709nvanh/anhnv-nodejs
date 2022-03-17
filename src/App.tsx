@@ -10,19 +10,16 @@ import WebsiteLayout from './components/layout/WebsiteLayout';
 import AdminLayout from './components/layout/AdminLayout';
 import Dashboard from './components/Dashboard';
 import ProductAdmin from './components/ProductAdmin';
+import "bootstrap/dist/css/bootstrap.min.css"
+import Header from './components/pages/Header';
 
 function App() {
   
   return (
     <div className="App">
-      <header>
-        <ul>
-          <li><NavLink to="/">Home page</NavLink></li>
-          <li><NavLink to="/product">Product</NavLink></li>
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-        </ul>
-      </header>
+      
       <main>
+      <Header />
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<Home />}/>
