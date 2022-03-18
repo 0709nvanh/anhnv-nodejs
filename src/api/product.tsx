@@ -8,3 +8,8 @@ export const remove = (id: number) => {
     const url = `/product/${id}`;
     return instance.delete(url);
 }
+
+export const add = (product: any) => {
+    const url = '/products';
+    return instance.post(url, product)
+}

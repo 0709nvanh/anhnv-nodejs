@@ -1,12 +1,24 @@
 {
-    "products": [
-        {
-            "name": "Product A",
-            "price": 5
-        },
-        {
-            "name": "Product B ",
-            "price": 5
-        }
-    ]
+  "products": [
+    {
+      "id": "1",
+      "name": "Product A",
+      "price": 5
+    },
+    {
+      "id": "2",
+      "name": "Product B ",
+      "price": 5
+    },
+    {
+      "name": "san pham 1",
+      "price": "12",
+      "id": "vF0Ftta"
+    },
+    {
+      "name": "San pham 2",
+      "price": "123",
+      "id": "kdT2n55"
+    }
+  ]
 }
