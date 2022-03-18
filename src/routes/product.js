@@ -1,9 +1,9 @@
 import { add, getOne, List, remove, update } from '../controllers/product';
 
-const { Router} = require('express');
+// const { Router} = require('express');
 const { checkAuth } = require('../middleware/checkAuth')
-
-const router = Router();
+import express from 'express';
+const router = express.Router();
 
 
 // get all

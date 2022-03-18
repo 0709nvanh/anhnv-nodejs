@@ -31,9 +31,7 @@ export const getOne = async (req, res) => {
   try {
     const category = await Category.findOne({slug: req.params.slug}).exec();
     const products = await Products.find({ category: category }).populate('category').select('-category').exec();
-    res.json({
-      category, products
-    });
+    res.json({category, products});
   } catch (error) {
     res.status(400).json({
       message: "Lỗi"
