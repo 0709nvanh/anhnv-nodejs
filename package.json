@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "json-server --watch db.json --port 3001"
+    "start": "json-server --watch db.json --port 3006"
   },
   "dependencies": {
     "axios": "^0.26.1",
