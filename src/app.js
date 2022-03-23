@@ -2,12 +2,13 @@
 // const productRouter = require('./routes/product');
 
 import express from "express";
-import productRouter from "./routes/product";
-import categoryRouter from "./routes/category";
 import mongoose from 'mongoose';
 import cors from 'cors'
 // import { readdirSync } from 'fs';
 
+import productRouter from "./routes/product";
+import categoryRouter from "./routes/category";
+import userRouter from "./routes/auth";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors())
 
 app.use('/api', productRouter);
 app.use('/api', categoryRouter);
+app.use('/api', userRouter);
 
 
 // connect database
