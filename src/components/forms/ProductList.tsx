@@ -1,14 +1,16 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { list } from '../../api/product'
+import { Link } from 'react-router-dom'
+import { list, removeProduct } from '../../api/product'
 import type { ProductType} from '../../types/product'
 
 
-type Props = {}
+type ProductListProps = {
+    onRemove: (id: number) => void
+    products: ProductType[]
+}
 
-type ProductAdmin = {
-    products: ProductType[];
-  }
-const ProductList = () => {
+const ProductList = (props: ProductListProps) => {
     const [products, setProducts] = useState<any>([])
     useEffect(() => {
         const getProduct = async () => {
@@ -17,8 +19,16 @@ const ProductList = () => {
         }
         getProduct()    
       }, [])
+
+      const onRemove = async (id: number) => {
+          await removeProduct(id);
+          setProducts(products.filter(item => item.id !== id));
+        } 
   return (
     <div>
+        <div>
+            <Link to="/admin/product/add">Add</Link>
+        </div>
         <table className="table">
             <thead>
                 <tr>
@@ -36,14 +46,14 @@ const ProductList = () => {
                             <td>{item.name}</td>
                             <td>{item.price}</td>
                             <td>
-                                <button type="button" className="btn btn-outline-primary">Delete</button>
-                                <button type="button" className="btn btn-outline-warning">Edit</button>
+                                <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
+                                <button onClick={() => props.onRemove(item.id)} className="btn btn-outline-primary">Remove</button>
                             </td>
                         </tr>
                     )
                 })}
             </tbody>
-            </table>
+        </table>
     </div>
   )
 }
