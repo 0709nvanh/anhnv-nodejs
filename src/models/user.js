@@ -28,7 +28,6 @@ userSchema.methods = {
         return this.password == this.encrytPassword(password);
     },
     encrytPassword(password){
-        console.log(password);
         if(!password) return;
         try {
             return createHmac('sha256', this.salt).update(password).digest('hex')

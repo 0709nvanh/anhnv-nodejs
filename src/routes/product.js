@@ -1,7 +1,7 @@
 import { add, getOne, List, remove, update } from '../controllers/product';
 
 // const { Router} = require('express');
-const { checkAuth } = require('../middleware/checkAuth')
+const { checkAuth, requiredSignin, isAuth } = require('../middleware/checkAuth')
 import express from 'express';
 const router = express.Router();
 
@@ -13,7 +13,7 @@ const router = express.Router();
     router.get("/product/:id" , getOne)
 
     // create
-    router.post("/product", checkAuth, add)
+    router.post("/product", requiredSignin, isAuth, add)
 
     // update
     router.put("/product/:id", checkAuth, update)
