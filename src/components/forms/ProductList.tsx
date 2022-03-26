@@ -6,7 +6,7 @@ import type { ProductType} from '../../types/product'
 
 
 type ProductListProps = {
-    onRemove: (id: number) => void
+    onRemove: (id: any) => void
     products: ProductType[]
 }
 
@@ -18,12 +18,7 @@ const ProductList = (props: ProductListProps) => {
             setProducts(data)            
         }
         getProduct()    
-      }, [])
-
-      const onRemove = async (id: number) => {
-          await removeProduct(id);
-          setProducts(products.filter(item => item.id !== id));
-        } 
+      }, []) 
   return (
     <div>
         <div>
