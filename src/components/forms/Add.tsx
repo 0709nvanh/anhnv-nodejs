@@ -36,7 +36,6 @@ const Add = (props: ProductProp) => {
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
-          onSubmit={handleSubmit(onSubmit)}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"

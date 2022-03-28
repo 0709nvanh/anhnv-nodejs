@@ -37,7 +37,7 @@ function App() {
           <Route index element={<Home />}/>
           <Route path="product" element={<Product />} />
         </Route>
-        <Route path="login" element={<PageSignUp />}/>
+        {/* <Route path="login" element={<PageSignUp />}/> */}
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />}/>
           <Route path="product" >

@@ -1,10 +1,11 @@
 import React from 'react'
+import Banner from './client/banner/Banner'
 
 type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <div>Home</div>
+    <div><Banner /></div>
   )
 }
 
