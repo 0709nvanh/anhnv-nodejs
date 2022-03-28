@@ -1,8 +1,9 @@
 import { add, getOne, List, remove, update } from '../controllers/product';
 
 // const { Router} = require('express');
-const { checkAuth, requiredSignin, isAuth } = require('../middleware/checkAuth')
+const { checkAuth, requiredSignin, isAuth, isAdmin } = require('../middleware/checkAuth')
 import express from 'express';
+import { userById } from '../controllers/user';
 const router = express.Router();
 
 
@@ -13,7 +14,7 @@ const router = express.Router();
     router.get("/product/:id" , getOne)
 
     // create
-    router.post("/product", requiredSignin, isAuth, add)
+    router.post("/product/:userId", requiredSignin, isAuth, isAdmin, add)
 
     // update
     router.put("/product/:id", checkAuth, update)
@@ -21,5 +22,6 @@ const router = express.Router();
     // delete
     router.delete("/product/:id" , remove)
 
+    router.param("userId", userById)
 // module.exports = router;
 export default router;

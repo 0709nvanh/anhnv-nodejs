@@ -19,14 +19,20 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    role: {
+        type: Number, 
+        default: 0
     }
 }, { timestamp: true })
 
 
 userSchema.methods = {
+    //method
     authenticate(password){
         return this.password == this.encrytPassword(password);
     },
+    //method
     encrytPassword(password){
         if(!password) return;
         try {
@@ -36,6 +42,8 @@ userSchema.methods = {
         }
     }
 }
+
+//middleware
 userSchema.pre("save", async function save(next){
     try {
         this.salt = uuidv4();
