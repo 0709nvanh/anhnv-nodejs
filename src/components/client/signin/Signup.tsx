@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import './signin.css' 
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
-import { signup } from '../../../api/auth';
+import { signin } from '../../../api/auth';
 type Props = {}
 
 type InputTypes = {
@@ -11,20 +11,19 @@ type InputTypes = {
     email: string,
     password: string
 }
-
 const Signup = (props: Props) => {
     const { register, handleSubmit, formState: { errors }} = useForm<InputTypes>();
     const navigate = useNavigate()
-    const onFinish = (data: any) => {
-        signup(data);
-        navigate('/signin')
+    const onFinish = async (data: any) => {
+        const { data: user } = await signin(data);
+        authenticate(user, () => navigate('/'))
       };
     
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
-    
-      return (
+  return (
+    <div>
         <div className='signin'>
             <Form
             name="basic"
@@ -35,13 +34,6 @@ const Signup = (props: Props) => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             >
-            <Form.Item
-                label="Name"
-                name="user"
-                rules={[{ required: true, message: 'Please input your username!' }]}
-            >
-                <Input />
-            </Form.Item>
             <Form.Item
                 label="Email"
                 name="email"
@@ -65,7 +57,8 @@ const Signup = (props: Props) => {
             </Form.Item>
             </Form>
         </div>
-      );
+    </div>
+  )
 }
 
 export default Signup
