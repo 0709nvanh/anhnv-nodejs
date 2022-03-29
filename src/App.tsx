@@ -10,12 +10,12 @@ import WebsiteLayout from './components/layout/WebsiteLayout';
 import AdminLayout from './components/layout/AdminLayout';
 import Dashboard from './components/Dashboard';
 import ProductAdmin from './components/forms/ProductAdmin';
-import "bootstrap/dist/css/bootstrap.min.css"
 import Header from './components/pages/Header';
 import ProductList from './components/forms/ProductList';
 import Edit from './components/forms/Edit';
-import PageSignUp from './components/Author/PageSignUp';
-
+import 'antd/dist/antd.css';
+import Blog from './components/client/blog/Blog';
+import Signup from './components/client/signup/Signup';
 
 function App() {
   
@@ -31,11 +31,12 @@ function App() {
    return (
     <div className="App">
       <main>
-      <Header />
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<Home />}/>
           <Route path="product" element={<Product />} />
+          <Route path="blog" element={<Blog />}/>
+          <Route path="signup" element={<Signup  />}/>
         </Route>
         {/* <Route path="login" element={<PageSignUp />}/> */}
         <Route path="admin" element={<AdminLayout />}>

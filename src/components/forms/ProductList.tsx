@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { list, removeProduct } from '../../api/product'
-import type { ProductType} from '../../types/product'
+import type { ProductType } from '../../types/product'
 
 
 type ProductListProps = {
@@ -28,27 +28,27 @@ const ProductList = (props: ProductListProps) => {
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Action</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
                 </tr>
             </thead>
             <tbody>
                 {products.map((item: ProductType, index: number) => {
-                    return (
-                        <tr>
-                            <td>{index+1}</td>
-                            <td>{item.name}</td>
-                            <td>{item.price}</td>
-                            <td>
-                                <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
-                                <button onClick={() => props.onRemove(item.id)} className="btn btn-outline-primary">Remove</button>
-                            </td>
-                        </tr>
-                    )
-                })}
+                        return (
+                            <tr>
+                                <td>{index+1}</td>
+                                <td>{item.name}</td>
+                                <td>{item.price}</td>
+                                <td>
+                                    <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
+                                    <button onClick={() => props.onRemove(item.id)} className="btn btn-outline-primary">Remove</button>
+                                </td>
+                            </tr>    
+                        )
+                    })}         
             </tbody>
-        </table>
+            </table>
     </div>
   )
 }
