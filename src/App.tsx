@@ -9,13 +9,14 @@ import Home from './components/Home';
 import WebsiteLayout from './components/layout/WebsiteLayout';
 import AdminLayout from './components/layout/AdminLayout';
 import Dashboard from './components/Dashboard';
-import ProductAdmin from './components/forms/ProductAdmin';
+import ProductAdmin from './components/admin/product/ProductAdmin';
 import Header from './components/pages/Header';
-import ProductList from './components/forms/ProductList';
-import Edit from './components/forms/Edit';
+import ProductList from './components/admin/product/List';
+import Edit from './components/admin/product/Edit';
 import 'antd/dist/antd.css';
 import Blog from './components/client/blog/Blog';
 import Signup from './components/client/signup/Signup';
+import Signin from './components/client/signin/Signup';
 
 function App() {
   
@@ -36,7 +37,8 @@ function App() {
           <Route index element={<Home />}/>
           <Route path="product" element={<Product />} />
           <Route path="blog" element={<Blog />}/>
-          <Route path="signup" element={<Signup  />}/>
+          <Route path="signup" element={<Signup />}/>
+          <Route path="signin" element={<Signin />}/>
         </Route>
         {/* <Route path="login" element={<PageSignUp />}/> */}
         <Route path="admin" element={<AdminLayout />}>

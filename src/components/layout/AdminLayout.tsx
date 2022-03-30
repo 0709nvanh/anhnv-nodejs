@@ -1,20 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import NavBarAdmin from '../admin/layout/NavBarAdmin'
 
 type Props = {}
 
 const AdminLayout = (props: Props) => {
   return (
     <div>
-        <header>
-            Header Admin
-        </header>
+        <NavBarAdmin />
         <main>
             <Outlet/>
         </main>
-        <footer>
-            Footer
-        </footer>
     </div>
   )
 }

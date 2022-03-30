@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import {MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
-import { Menu } from 'antd'
+import { Menu, Input } from 'antd'
 type Props = {
     
 };
@@ -13,9 +13,9 @@ const Nav = (props: Props) => {
 const { SubMenu } = Menu;
   return (
     <div>
-        <Menu onClick={handleClick} mode="horizontal" style={{}}>
+      <Menu onClick={handleClick} mode="horizontal" style={{}}>
         <Menu.Item key="mail">
-          Home
+          <NavLink to="/">Home</NavLink>
         </Menu.Item>
         <SubMenu key="SubMenu" title="Product">
             <Menu.Item key="setting:1">Chairs & Sofas</Menu.Item>
@@ -38,8 +38,16 @@ const { SubMenu } = Menu;
         <Menu.Item key="blog">
           <Link to="/blog">Blog</Link>
         </Menu.Item>
+        <Menu.Item>
+          <Input style={{ width: 500}} placeholder="Search..." />
+        </Menu.Item>
+        <Menu.Item key="signin">
+          <Link to="/signin">Sign in</Link>
+        </Menu.Item>
+        <Menu.Item key="signup">
+          <Link to="/signup">Sign up</Link>
+        </Menu.Item>
       </Menu>
-
     </div>
   );
 };

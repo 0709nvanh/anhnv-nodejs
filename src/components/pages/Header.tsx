@@ -9,6 +9,7 @@ const Header = (props: Props) => {
   return (
     <div>
         <Nav />
+        
     </div>
   )
 }

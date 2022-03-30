@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { add, removeProduct, update } from '../../api/product'
-import { ProductType } from '../../types/product';
+import { add, removeProduct, update } from '../../../api/product'
+import { ProductType } from '../../../types/product';
 import Add from './Add'
 
 type Props = {

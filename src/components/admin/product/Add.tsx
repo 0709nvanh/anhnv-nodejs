@@ -13,13 +13,14 @@ type ProductProp = {
 const Add = (props: ProductProp) => {
     const { register, handleSubmit, formState: { errors }} = useForm<Inputs>()
     const navigate = useNavigate()
-    const onSubmit: SubmitHandler<Inputs> = (dataInput) => {
+    // const onSubmit: SubmitHandler<Inputs> = (dataInput) => {
+    //     props.onAdd(dataInput);
+    //     navigate("/admin/product");
+    // }
+
+    const onFinish: SubmitHandler<Inputs> = (dataInput: any) => {
         props.onAdd(dataInput);
         navigate("/admin/product");
-    }
-
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
       };
     
       const onFinishFailed = (errorInfo: any) => {

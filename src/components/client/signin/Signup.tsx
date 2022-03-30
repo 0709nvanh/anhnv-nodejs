@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
-import './signin.css' 
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { signin } from '../../../api/auth';
+import { authenticate } from '../../../utils/localStorage';
 type Props = {}
 
 type InputTypes = {
@@ -11,7 +11,7 @@ type InputTypes = {
     email: string,
     password: string
 }
-const Signup = (props: Props) => {
+const Signin = (props: Props) => {
     const { register, handleSubmit, formState: { errors }} = useForm<InputTypes>();
     const navigate = useNavigate()
     const onFinish = async (data: any) => {
@@ -61,4 +61,4 @@ const Signup = (props: Props) => {
   )
 }
 
-export default Signup
+export default Signin
