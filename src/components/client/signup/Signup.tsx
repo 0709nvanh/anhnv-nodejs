@@ -38,14 +38,14 @@ const Signup = (props: Props) => {
             <Form.Item
                 label="Name"
                 name="user"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[{ required: true, message: 'Please enter your username!' }]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 label="Email"
                 name="email"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[{ required: true, message: 'Please enter your email!' }]}
             >
                 <Input />
             </Form.Item>
@@ -53,7 +53,7 @@ const Signup = (props: Props) => {
             <Form.Item
                 label="Password"
                 name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[{ required: true, message: 'Please enter your password!' }]}
             >
                 <Input.Password />
             </Form.Item>
